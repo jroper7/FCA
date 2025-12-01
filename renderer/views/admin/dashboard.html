@@ -1,10 +1,43 @@
-<div class="page admin-dashboard">
-  <h1>Admin Dashboard</h1>
+<div class="dashboard-container">
+  <h1 class="dashboard-title">ADMIN DASHBOARD</h1>
 
-  <button onclick="navigateTo('admin/events')">Events</button>
-  <button onclick="navigateTo('admin/devotions')">Devotions</button>
-  <button onclick="navigateTo('admin/messages')">Messages</button>
-  <button onclick="navigateTo('admin/settings')">Settings</button>
+  <div class="dashboard-grid">
 
-  <button onclick="navigateTo('login')">Logout</button>
+    <!-- Create Messages -->
+    <div class="dashboard-item">
+      <h2>Create Messages</h2>
+      <p>Send important announcements, reminders, and updates directly to your FCA users.</p>
+      <button class="action-btn">
+        <span class="plus">+</span> Create Message
+      </button>
+    </div>
+
+    <!-- Create Devotionals -->
+    <div class="dashboard-item">
+      <h2>Create Devotionals</h2>
+      <p>Publish new devotionals for your users to read and stay spiritually encouraged.</p>
+      <button class="action-btn">
+        <span class="plus">+</span> Create Devotional
+      </button>
+    </div>
+
+    <!-- Create Events -->
+    <div class="dashboard-item">
+      <h2>Create Events</h2>
+      <p>Schedule upcoming FCA meetings, gatherings, and special group events.</p>
+      <button class="action-btn">
+        <span class="plus">+</span> Create Event
+      </button>
+    </div>
+
+    <!-- Edit Mission Statement -->
+    <div class="dashboard-item">
+      <h2>Edit Mission Statement</h2>
+      <p>Update the FCA mission statement shown to all users on their homepage.</p>
+      <button class="action-btn">
+        <span class="plus">+</span> Edit Mission Statement
+      </button>
+    </div>
+
+  </div>
 </div>
