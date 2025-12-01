@@ -3,10 +3,10 @@
   "productName": "fca-app",
   "version": "1.0.0",
   "description": "My Electron application description",
-  "main": "src/index.js",
+  "main": "main.js",
   "scripts": {
     "start": "npm-run-all -p sass electron",
-    "sass": "sass src/scss/styles.scss src/css/styles.css -w",
+    "sass": "sass renderer/scss/styles.scss renderer/css/styles.css -w",
     "electron": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
@@ -20,7 +20,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.1"
+    "electron-squirrel-startup": "^1.0.1",
+    "jquery": "^3.7.1"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.10.2",
