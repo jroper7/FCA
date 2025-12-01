@@ -2,7 +2,7 @@ async function navigateTo(viewName) {
   const viewPath = `views/${viewName}.html`;
 
   try {
-    const html = await fetch(viewPath).then(r => r.text());
+    const html = await fetch(viewPath).then(res => res.text());
     document.getElementById("app").innerHTML = html;
   } catch (err) {
     console.error("Failed to load view:", viewName, err);
