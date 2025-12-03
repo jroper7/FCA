@@ -7,7 +7,8 @@ contextBridge.exposeInMainWorld("fca", {
    db: {
     
     getMissionStatement: () => ipcRenderer.invoke("db:getMissionStatement"),
-    // setMissionStatement: (text) => ipcRenderer.invoke("db:setMissionStatement", text)
+    updateMissionStatement: (text) => ipcRenderer.invoke("db:updateMissionStatement", text),
+
   },
 
 

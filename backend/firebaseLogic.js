@@ -1,4 +1,4 @@
-const { db, doc, getDoc } = require("../firebase.js");
+const { db, doc, getDoc, setDoc } = require("../firebase.js");
 
 // GET MISSION DATA
 // USER/ADMIN
@@ -15,8 +15,17 @@ async function getMissionStatement() {
   }
 }
 
+const updateMissionStatement = async (newStatement) => {
+  const docRef = doc(db, "settings", "mission");
+  await setDoc(docRef, { text: newStatement });
+  return newStatement;
+
+  console.log("Mission statement updated to:", newStatement);
+}
+
 module.exports = {
   getMissionStatement,
+  updateMissionStatement
 };
 
 

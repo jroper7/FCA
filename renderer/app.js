@@ -12,6 +12,9 @@ async function navigateTo(viewName) {
       case  "user/home":
         await loadMissionStatement();
         break;
+      case "admin/mission":
+        await loadMissionStatement();
+        break;
       default:
         // No additional JS to load
         break;
@@ -25,4 +28,4 @@ async function navigateTo(viewName) {
 window.navigateTo = navigateTo;
 
 // Start with login page
-navigateTo("user/home");
+navigateTo("admin/dashboard");
