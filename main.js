@@ -1,5 +1,7 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
+const {registerIpcHandlers} = require("./backend/handler");
+
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -8,18 +10,20 @@ function createWindow() {
     backgroundColor: "#ffffff",
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
-      nodeIntegration: false,
       contextIsolation: true,
-    },
+      nodeIntegration: false,
+      
+    }
   });
 
   win.loadFile("renderer/index.html");
 
   // Optional: Open devtools during development
-  // win.webContents.openDevTools();
+  win.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
+  registerIpcHandlers(ipcMain);
   createWindow();
 
   app.on("activate", () => {

@@ -1,10 +1,22 @@
-const { contextBridge } = require("electron");
+const { contextBridge, ipcRenderer } = require("electron");
+// const path = require("path");
+
 
 contextBridge.exposeInMainWorld("fca", {
+
+   db: {
+    
+    getMissionStatement: () => ipcRenderer.invoke("db:getMissionStatement"),
+    // setMissionStatement: (text) => ipcRenderer.invoke("db:setMissionStatement", text)
+  },
+
+
   navigate: (view) => {
     // You can wire special functionality here later if needed
     window.navigateTo(view);
   },
+
+ 
 
   // Placeholder for Firebase or database functions later
   auth: {
@@ -17,5 +29,11 @@ contextBridge.exposeInMainWorld("fca", {
   // Secure logger
   log: (message) => {
     console.log("Renderer:", message);
+    
   },
+
+  
+
 });
+
+
