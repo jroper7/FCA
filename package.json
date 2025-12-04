@@ -2,7 +2,7 @@
   "name": "fca-app",
   "productName": "fca-app",
   "version": "1.0.0",
-  "type":"commonjs",
+  "type": "commonjs",
   "description": "My Electron application description",
   "main": "main.js",
   "scripts": {
@@ -21,6 +21,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "electron-squirrel-startup": "^1.0.1",
     "firebase": "^12.6.0",
     "jquery": "^3.7.1"

@@ -1,14 +1,15 @@
 const { initializeApp } = require("firebase/app");
 const { getFirestore, doc, getDoc, setDoc, collection, addDoc } = require("firebase/firestore");
+require("dotenv").config();
 
 // Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyBZRgqiOuLUfhQlFRx9CcRvx3cngaWe6lQ",
-  authDomain: "fca-indy.firebaseapp.com",
-  projectId: "fca-indy",
-  storageBucket: "fca-indy.firebasestorage.app",
-  messagingSenderId: "373482000190",
-  appId: "1:373482000190:web:293a2e216895807bef666f",
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
