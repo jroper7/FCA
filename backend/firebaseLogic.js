@@ -18,9 +18,11 @@ async function getMissionStatement() {
 const updateMissionStatement = async (newStatement) => {
   const docRef = doc(db, "settings", "mission");
   await setDoc(docRef, { text: newStatement });
+ 
+  console.log("Mission statement updated to:", newStatement);
   return newStatement;
 
-  console.log("Mission statement updated to:", newStatement);
+  
 }
 
 module.exports = {

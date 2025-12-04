@@ -1,4 +1,4 @@
-import { loadMissionStatement } from "./js/missionStatement.js";
+import { editMissionStatement, loadMissionStatement } from "./js/missionStatement.js";
 
 async function navigateTo(viewName) {
   const viewPath = `views/${viewName}.html`;
@@ -14,6 +14,10 @@ async function navigateTo(viewName) {
         break;
       case "admin/mission":
         await loadMissionStatement();
+        const updateBtn = document.getElementById("updateMissionBtn");
+        if (updateBtn) {
+            updateBtn.onclick = () => editMissionStatement();
+        }
         break;
       default:
         // No additional JS to load

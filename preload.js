@@ -17,7 +17,6 @@ contextBridge.exposeInMainWorld("fca", {
     window.navigateTo(view);
   },
 
- 
 
   // Placeholder for Firebase or database functions later
   auth: {

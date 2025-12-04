@@ -1,5 +1,3 @@
-import { doc } from "firebase/firestore";
-
 export async function loadMissionStatement() {
     const ms = document.getElementById("missionStatement");
 
@@ -18,20 +16,33 @@ export async function loadMissionStatement() {
     }
 }
 
-export async function editMissionStatement(newStatement) {
-    const missionInput = document.getElementById("missionInput");
-    if (!updateMissionBtn) {
-        console.error("Update button not found");
-        return;
-    } else {
 
+export async function editMissionStatement() {
+    const missionInput = document.getElementById("missionInput");
+    if (!missionInput) {
+        return console.error("Update input not found");   
     }
+
+    const newStatement = missionInput.value;
+
 
     try {
         await window.fca.db.updateMissionStatement(newStatement);
         console.log("Mission statement updated successfully.");
+
+        const ms = document.getElementById("missionStatement");
+        if (ms) ms.innerText = newStatement;
+        if (missionInput) missionInput.value = text || ""; 
     }
     catch (err) {
         console.error("Error updating mission statement:", err);
     }
+}
+
+const updateBtn = document.getElementById("updateMissionBtn");
+if(updateBtn) {
+    updateBtn.addEventListener("click", async () => {
+        console.log("Button clicked → updating mission");
+        await editMissionStatement();
+    }); 
 }
