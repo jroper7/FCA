@@ -1,4 +1,5 @@
 const { contextBridge, ipcRenderer } = require("electron");
+
 // const path = require("path");
 
 
@@ -6,8 +7,12 @@ contextBridge.exposeInMainWorld("fca", {
 
    db: {
     
+    // Mission Statement
     getMissionStatement: () => ipcRenderer.invoke("db:getMissionStatement"),
     updateMissionStatement: (text) => ipcRenderer.invoke("db:updateMissionStatement", text),
+
+    // events 
+    getEvents: () => ipcRenderer.invoke("db:getEvents"),
 
   },
 
@@ -32,7 +37,6 @@ contextBridge.exposeInMainWorld("fca", {
     
   },
 
-  
 
 });
 

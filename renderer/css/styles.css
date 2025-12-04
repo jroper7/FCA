@@ -193,5 +193,14 @@ h1, h2, h3, h4, h5, h6, p {
     justify-content: center;
   }
 }
+.events {
+  width: 800px;
+  height: auto;
+  background: white;
+  margin: 120px auto 40px auto;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
 
 /*# sourceMappingURL=styles.css.map */

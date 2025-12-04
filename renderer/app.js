@@ -1,5 +1,7 @@
 import { editMissionStatement, loadMissionStatement } from "./js/missionStatement.js";
 
+import { loadEvents } from "./js/events.js";
+
 async function navigateTo(viewName) {
   const viewPath = `views/${viewName}.html`;
 
@@ -19,6 +21,9 @@ async function navigateTo(viewName) {
             updateBtn.onclick = () => editMissionStatement();
         }
         break;
+      case "admin/events":
+        await loadEvents();
+        break;
       default:
         // No additional JS to load
         break;
@@ -32,4 +37,4 @@ async function navigateTo(viewName) {
 window.navigateTo = navigateTo;
 
 // Start with login page
-navigateTo("admin/dashboard");
+navigateTo("admin/events");

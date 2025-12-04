@@ -1,8 +1,7 @@
-const { db, doc, getDoc, setDoc } = require("../firebase.js");
+const { db, doc, getDoc, getDocs, setDoc, collection } = require("../firebase.js");
 
 // GET MISSION DATA
-// USER/ADMIN
-
+// ADMIN
 async function getMissionStatement() {
   const docRef = doc(db, "settings", "mission");
   const docSnap = await getDoc(docRef);
@@ -15,6 +14,7 @@ async function getMissionStatement() {
   }
 }
 
+// USER
 const updateMissionStatement = async (newStatement) => {
   const docRef = doc(db, "settings", "mission");
   await setDoc(docRef, { text: newStatement });
@@ -25,9 +25,35 @@ const updateMissionStatement = async (newStatement) => {
   
 }
 
+
+// _____EVENTS DATA_____
+//ADMIN
+
+async function getEvents() {
+  try {
+    const eventsCollection = collection(db, "events");
+    const eventsSnap = await getDocs(eventsCollection);
+  
+    const eventsList = eventsSnap.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+    
+    return eventsList;
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return [];
+  }
+  
+
+
+}
+
+
 module.exports = {
   getMissionStatement,
-  updateMissionStatement
+  updateMissionStatement,
+  getEvents
 };
 
 
