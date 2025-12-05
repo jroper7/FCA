@@ -1,34 +1,55 @@
 export async function loadEvents() {
-    const eventsContainer = document.getElementById("events");
-    if (!eventsContainer) {
-        console.error("Events element not found");
-        return;
-    }
+    const container = document.getElementById("events");
+    if (!container) return;
 
-    try {
-        const eventsList = await window.fca.db.getEvents();
-        console.log("eventsList:", eventsList);
+    container.innerHTML = ""; // Clear old events
+    const eventsList = await window.fca.db.getEvents();
 
-        // Clear previous content
-        eventsContainer.innerHTML = "";
+    eventsList.forEach(event => {
+        const row = renderEvent(event);
+        container.appendChild(row);
+    });
+}
 
-        if (!eventsList || eventsList.length === 0) {
-            eventsContainer.innerText = "No events available.";
-            return;
-        }
-        
 
-        eventsList.forEach(event => {
-            const div = document.createElement("div");
-              const dateString = event.date?.toDate ? event.date.toDate().toLocaleDateString() : new Date(event.date.seconds * 1000).toLocaleDateString();
-            div.innerText = `${event.name} | ${dateString} | ${event.time} | ${event.location}`;
-            eventsContainer.appendChild(div);
-        });
 
-    } catch (err) {
-        console.error("Error loading events:", err);
-        eventsContainer.innerText = "Error loading events.";
-    }
-};
+async function deleteEvent(eventId, rowElement) {
+    const confirmed = confirm("Delete this event?");
+    if (!confirmed) return;
+
+    await window.fca.db.deleteEvent(eventId);
+    rowElement.remove(); 
+}
+
+function goToEditPage(eventId) {
+    navigateTo(`admin/edit-event`);
+    window.currentEditId = eventId
+}
+
+function renderEvent(event) {
+    const div = document.createElement("div");
+    div.classList.add("event-row");
+
+    const dateString = event.date?.toDate ? event.date.toDate().toLocaleDateString() : new Date(event.date.seconds * 1000).toLocaleDateString();
+    div.innerHTML = `
+        <span>${event.name} | ${dateString} | ${event.time} | ${event.location}</span>
+        <div class="event-actions">
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        </div>
+    `;
+
+    div.querySelector(".edit-btn").addEventListener("click", () => {
+        goToEditPage(event.id);
+    });
+
+    div.querySelector(".delete-btn").addEventListener("click", () => {
+        deleteEvent(event.id, div);
+    });
+
+    return div;
+}
+
+
 
 

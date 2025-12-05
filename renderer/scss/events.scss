@@ -1,4 +1,4 @@
-.events{
+.events-class{
       width: 800px;
     height: auto;
     background: white;
@@ -6,4 +6,34 @@
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+.event-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.event-text {
+    font-size: 16px;
+}
+
+.event-actions button {
+    margin-left: 10px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.event-actions .delete-btn {
+    background: #ff4d4d;
+    color: white;
+}
+
+.event-actions .edit-btn {
+    background: #4d79ff;
+    color: white;
 }

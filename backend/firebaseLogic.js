@@ -1,4 +1,4 @@
-const { db, doc, getDoc, getDocs, setDoc, collection } = require("../firebase.js");
+const { db, doc, getDoc, getDocs, setDoc, collection, deleteDoc } = require("../firebase.js");
 
 // GET MISSION DATA
 // ADMIN
@@ -45,15 +45,21 @@ async function getEvents() {
     return [];
   }
   
-
-
 }
+
+async function deleteEvent(eventId) {
+  const eventDocRef = doc(db, "events", eventId);
+  await deleteDoc(eventDocRef);
+  console.log(`Event with ID ${eventId} deleted.`);
+
+};
 
 
 module.exports = {
   getMissionStatement,
   updateMissionStatement,
-  getEvents
+  getEvents,
+  deleteEvent
 };
 
 

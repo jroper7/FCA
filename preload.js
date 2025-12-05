@@ -13,6 +13,7 @@ contextBridge.exposeInMainWorld("fca", {
 
     // events 
     getEvents: () => ipcRenderer.invoke("db:getEvents"),
+    deleteEvent: (eventId) => ipcRenderer.invoke("db:deleteEvent", eventId),
 
   },
 
