@@ -1,5 +1,5 @@
 const { initializeApp } = require("firebase/app");
-const { getFirestore, doc, getDoc, getDocs, setDoc, collection, addDoc, deleteDoc } = require("firebase/firestore");
+const { getFirestore, doc, getDoc, getDocs, setDoc, collection, addDoc, deleteDoc, updateDoc } = require("firebase/firestore");
 
 require("dotenv").config();
 
@@ -28,5 +28,6 @@ module.exports = {
   setDoc,
   collection,
   addDoc,
-  deleteDoc
+  deleteDoc,
+  updateDoc
 };

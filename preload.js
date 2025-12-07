@@ -22,22 +22,25 @@ contextBridge.exposeInMainWorld("fca", {
     sendMessage: (messageData) => ipcRenderer.invoke("db:sendMessage", messageData),
     getMessages: () => ipcRenderer.invoke("db:getMessages"),
     deleteMessage: (messageId) => ipcRenderer.invoke("db:deleteMessage", messageId),
+    markMessageRead: (id, userId) => ipcRenderer.invoke("db:markMessageRead", id, userId),
 
   },
 
 
   navigate: (view) => {
-    // You can wire special functionality here later if needed
+    
     window.navigateTo(view);
   },
 
 
-  // Placeholder for Firebase or database functions later
+  
   auth: {
+    
     login: async (email, password) => {
       console.log("Login attempt:", email);
-      // actual Firebase logic will go in renderer or a wrapper
     },
+    getUserId: () => ipcRenderer.invoke("auth:getUserId"),
+    
   },
 
   // Secure logger

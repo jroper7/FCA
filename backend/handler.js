@@ -13,12 +13,17 @@ function registerIpcHandlers(ipcMain) {
   ipcMain.handle("db:getEventById", (_, eventId) => dbLogic.getEventById(eventId));
   ipcMain.handle("db:updateEvent", (_, eventId, updatedData) => dbLogic.updateEvent(eventId, updatedData));
   ipcMain.handle("db:createEvent", (_, eventData) => dbLogic.createEvent(eventData));
+  
 
   // MESSAGES
   ipcMain.handle("db:sendMessage", (_, messageData) => dbLogic.sendMessage(messageData));
   ipcMain.handle("db:getMessages", () => dbLogic.getMessages());
   ipcMain.handle("db:deleteMessage", (_, messageId) => dbLogic.deleteMessage(messageId));
+  // USER
+  ipcMain.handle("auth:getUserId", (_, session) => dbLogic.getUserIdFromSession(session));
  
+
+  
 }
 
 module.exports = { registerIpcHandlers };

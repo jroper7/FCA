@@ -84,7 +84,7 @@ export async function loadMessages() {
             card.classList.add("message-card");
 
             card.innerHTML = `
-                <img src="file:///C:/Users/markr/OneDrive/Desktop/FCA/fca-app/assets/mail.png" class="devotional-icon" />
+                <img src="../assets/mail.png" class="devotional-icon" />
                 <div>
                     <h3>${msg.title}</h3>
                     <p>${msg.main}</p>

@@ -1,5 +1,5 @@
 const { get } = require("jquery");
-const { db, doc, getDoc, getDocs, setDoc, collection, deleteDoc } = require("../firebase.js");
+const { db, doc, getDoc, getDocs, setDoc, collection, deleteDoc, updateDoc } = require("../firebase.js");
 
 // MISSIONS
 // ADMIN
@@ -23,8 +23,8 @@ const updateMissionStatement = async (newStatement) => {
   console.log("Mission statement updated to:", newStatement);
   return newStatement;
 
-  
 }
+
 
 
 // _____EVENTS_____
@@ -111,6 +111,19 @@ async function deleteMessage(messageId) {
 
 };
 
+// USER Message
+async function markMessageRead(id, userId) {
+    const ref = doc(db, "announcements", id);
+    await updateDoc(ref, {
+        readBy: arrayUnion(userId)
+    });
+}
+
+function getUserIdFromSession(session) {
+    return session?.userId || null;
+}
+
+
 
 
 module.exports = {
@@ -123,7 +136,9 @@ module.exports = {
   createEvent,
   sendMessage,
   getMessages,
-  deleteMessage
+  deleteMessage, 
+  markMessageRead,
+  getUserIdFromSession
 };
 
 

@@ -5,6 +5,8 @@ import { sendMessage, getMessages } from "./js/sendMessage.js";
 
 // User functions
 import { initHomePage } from "./js/userHome.js";
+import { loadAllEvents } from "./js/userEvent.js";
+import { loadUserMessages} from "./js/userMessage.js";
 
 
 
@@ -20,6 +22,12 @@ async function navigateTo(viewName) {
     switch(viewName) {  
       case  "user/home":
         initHomePage();
+        break;
+      case "user/events":
+        await loadAllEvents();
+        break;
+      case "user/message":
+        await loadUserMessages();
         break;
       case "admin/mission":
         await loadMissionStatement();
@@ -54,4 +62,4 @@ async function navigateTo(viewName) {
 window.navigateTo = navigateTo;
 
 // Start with login page
-navigateTo("user/home");
+navigateTo("user/events");
