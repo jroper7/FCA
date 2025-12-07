@@ -12,6 +12,7 @@ function registerIpcHandlers(ipcMain) {
   ipcMain.handle("db:deleteEvent", (_, eventId) => dbLogic.deleteEvent(eventId));
   ipcMain.handle("db:getEventById", (_, eventId) => dbLogic.getEventById(eventId));
   ipcMain.handle("db:updateEvent", (_, eventId, updatedData) => dbLogic.updateEvent(eventId, updatedData));
+  ipcMain.handle("db:createEvent", (_, eventData) => dbLogic.createEvent(eventData));
 
   // MESSAGES
   ipcMain.handle("db:sendMessage", (_, messageData) => dbLogic.sendMessage(messageData));

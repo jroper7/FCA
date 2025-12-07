@@ -16,6 +16,7 @@ contextBridge.exposeInMainWorld("fca", {
     deleteEvent: (eventId) => ipcRenderer.invoke("db:deleteEvent", eventId),
     getEventById: (eventId) => ipcRenderer.invoke("db:getEventById", eventId),
     updateEvent: (eventId, updatedData) => ipcRenderer.invoke("db:updateEvent", eventId, updatedData),
+    createEvent: (eventData) => ipcRenderer.invoke("db:createEvent", eventData),
 
     // messages
     sendMessage: (messageData) => ipcRenderer.invoke("db:sendMessage", messageData),

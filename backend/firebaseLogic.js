@@ -68,6 +68,14 @@ async function updateEvent(eventId, updatedData) {
   console.log(`Event ${eventId} updated.`);
 }
 
+async function createEvent(eventData) {
+  const eventsCollection = collection(db, "events");
+  const newEventRef = doc(eventsCollection);
+  await setDoc(newEventRef, eventData);
+  console.log("Event created:", eventData);
+
+}
+
 
 // ____MESSAGES____
 
@@ -112,6 +120,7 @@ module.exports = {
   deleteEvent,
   getEventById, 
   updateEvent,
+  createEvent,
   sendMessage,
   getMessages,
   deleteMessage

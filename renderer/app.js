@@ -1,6 +1,7 @@
 import { editMissionStatement, loadMissionStatement } from "./js/missionStatement.js";
 import { loadEvents, loadEventData, setupEventForm } from "./js/events.js";
-import { sendMessage, getMessages, deleteMessage } from "./js/sendMessage.js";
+import { setupCreateEventForm } from "./js/createEvent.js"; 
+import { sendMessage, getMessages } from "./js/sendMessage.js";
 
 
 
@@ -25,6 +26,7 @@ async function navigateTo(viewName) {
         }
         break;
       case "admin/events":
+        setupCreateEventForm();
         await loadEvents();
         break;
       case "admin/edit-event":
