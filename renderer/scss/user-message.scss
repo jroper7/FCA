@@ -1,0 +1,104 @@
+.background-color {
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #F0A90C 0%, #FFF3D8 100%);
+    color: #333;
+    padding: 40px 20px 0px 20px;
+    min-height: 100vh;
+}
+/* Container */
+.messages-page-container {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+
+    h1 {
+        color:  #1846AC;
+    }
+
+    h2 {
+        
+        color: #941510;
+    }
+}
+
+/* Page Header */
+.page-header {
+    text-align: left;
+    margin-bottom: 40px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Message Card */
+.message-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.message-card:hover {
+    background-color: #f0f0f0;
+}
+
+/* Mark as read state (you can toggle with JS later) */
+.message-card.read {
+    background-color: #ddd;
+}
+
+.message-icon {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+     
+}
+
+/* Icon */
+.message-icon img {
+   width: 40px;
+height: 40px;
+    
+}
+
+/* Content */
+.message-content {
+    flex: 1;
+}
+
+.message-content h2 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+}
+
+.message-content p {
+    margin: 0;
+    color: #555;
+}
+
+/* Time */
+.message-time p {
+    margin: 0;
+    font-size: 14px;
+    color: #888;
+}
+
+/* No More Messages */
+.no-messages {
+    text-align: center;
+    margin-top: 60px;
+    color: #333;
+}
+
+.no-messages .icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}

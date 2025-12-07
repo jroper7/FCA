@@ -3,6 +3,9 @@ import { loadEvents, loadEventData, setupEventForm } from "./js/events.js";
 import { setupCreateEventForm } from "./js/createEvent.js"; 
 import { sendMessage, getMessages } from "./js/sendMessage.js";
 
+// User functions
+import { initHomePage } from "./js/userHome.js";
+
 
 
 
@@ -16,7 +19,7 @@ async function navigateTo(viewName) {
     // Switch statement to load js files
     switch(viewName) {  
       case  "user/home":
-        await loadMissionStatement();
+        initHomePage();
         break;
       case "admin/mission":
         await loadMissionStatement();
@@ -51,4 +54,4 @@ async function navigateTo(viewName) {
 window.navigateTo = navigateTo;
 
 // Start with login page
-navigateTo("admin/events");
+navigateTo("user/home");

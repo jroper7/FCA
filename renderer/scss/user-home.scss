@@ -1,0 +1,177 @@
+/* Main page */
+.user-home-container {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #F0A90C 0%, #FFF3D8 100%);
+    color: #333;
+    padding: 40px 50px; /* adds some spacing from top */
+}
+
+/* Mission Statement */
+.mission-statement {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 50px;
+
+    h1 {
+        color: #941510;
+    }
+}
+
+.mission-statement h1 {
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.mission-statement p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Columns container */
+.dashboard-columns {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Individual columns */
+.column {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Section headers */
+.column h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #1976D2;
+}
+
+/* Event cards */
+.event-card {
+    background-color: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.event-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.event-info-holder{
+    display: flex;
+    flex-direction: column;
+}
+
+.event-info-data {
+    padding: 0px 15px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    span {
+        font-size: 14px;
+        color: #555;
+    }
+}
+
+.event-card img {
+    width: 180px;
+    height: 160px;
+    object-fit: cover;
+}
+
+.event-info {
+    padding: 12px 15px;
+}
+
+.event-info h3 {
+    // margin: 0;
+    font-size: 18px;
+}
+
+.event-info p {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Devotional & Message cards */
+.devotional-card,
+.message-card {
+    display: flex;
+    background-color: rgba(255,255,255,0.95);
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    align-items: flex-start;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.devotional-card:hover,
+.message-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.devotional-icon,
+.message-icon {
+    width: 28px;      
+    height: 28px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+.devotional-card h3,
+.message-card h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.devotional-card p,
+.message-card p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* View all buttons */
+.view-all-btn {
+    // display: flex;
+    display: block; 
+    width: 100%;
+    text-align: center;
+    margin-top: 10px auto 0 auto;
+    
+    padding: 10px 0;
+     background-color: transparent; 
+    color: #1846AC;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+// .view-all-btn:hover {
+//     background-color: #0d5fb8;
+// }
+
+/* Responsive adjustments */
+@media (max-width: 1000px) {
+    .dashboard-columns {
+        flex-direction: column;
+        gap: 35px;
+    }
+}

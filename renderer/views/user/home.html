@@ -1,15 +1,39 @@
-<div class="page user-home">
-  <h1>Welcome User</h1>
+<main class="user-home-container">
+    <section class="mission-statement">
+        <h1>Welcome to FCA!</h1>
+        <p id="missionStatement">Loading mission statement...</p>
+    </section>
 
-  <button onclick="navigateTo('user/devotions')">Devotions</button>
-  <button onclick="navigateTo('user/events')">Events</button>
-  <button onclick="navigateTo('user/profile')">Profile</button>
+    <section class="dashboard-columns">
+        <div class="column" id="eventsColumn">
+            <h2>Upcoming Events</h2>
+            <div id="eventsList"></div>
+            <button class="view-all-btn">View All Events</button>
+        </div>
 
-  <button onclick="navigateTo('login')">Logout</button>
+        <div class="column" id="devotionalsColumn">
+            <h2>Latest Devotionals</h2>
+            <div class="devotional-card">
+                <img src="file:///C:/Users/markr/OneDrive/Desktop/FCA/fca-app/assets/open-book.png" class="devotional-icon" alt="Book Icon" />
+                <div>
+                    <h3>Faith in Action</h3>
+                    <p>"Trust in the Lord with all your heart." - Proverbs 3:5</p>
+                </div>
+            </div>
+            <div class="devotional-card">
+                <img src="file:///C:/Users/markr/OneDrive/Desktop/FCA/fca-app/assets/open-book.png" class="devotional-icon" alt="Book Icon" />
+                <div>
+                    <h3>Strength in Trials</h3>
+                    <p>"I can do all things through Christ who strengthens me." - Philippians 4:13</p>
+                </div>
+            </div>
+            <button class="view-all-btn">View All Devotionals</button>
+        </div>
 
-
-  <h1>Welcome to FCA App</h1>
-  <p id="missionStatement">Loading mission statement...</p>
-</div>
-
-
+        <div class="column" id="messagesColumn">
+            <h2>Recent Messages</h2>
+            <div id="messagesList"></div>
+            <button class="view-all-btn">Read All Messages</button>
+        </div>
+    </section>
+</main>
