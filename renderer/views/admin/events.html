@@ -1,4 +1,39 @@
-<div class="events-class">
-    <div id="events"></div>
-    
+<div class="create-event-container">
+    <h2>Create Event</h2>
+
+    <form id="createEventForm">
+
+        <label for="eventName">Event Name</label>
+        <input type="text" id="eventName" required />
+
+        <!-- Date + Time row -->
+        <div class="date-time-row">
+            <div>
+                <label for="eventDate">Date</label>
+                <input type="date" id="eventDate" required />
+            </div>
+
+            <div>
+                <label for="eventTime">Time</label>
+                <input type="time" id="eventTime" required />
+            </div>
+        </div>
+
+        <label for="eventLocation">Location</label>
+        <input type="text" id="eventLocation" required />
+
+        <label for="eventImage">Event Image</label>
+        <div class="upload-box">
+            <p>Click or drag & drop image here</p>
+            <input type="file" id="eventImage" accept="image/*" />
+        </div>
+
+        <label for="eventDescription">Description</label>
+        <textarea id="eventDescription" rows="4" placeholder="Write event details..."></textarea>
+
+        <div class="button-row">
+            <button type="button" class="cancel-btn" id="cancelBtn">Cancel</button>
+            <button type="submit" class="create-btn">Create Event</button>
+        </div>
+    </form>
 </div>

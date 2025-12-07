@@ -1,6 +1,9 @@
 import { editMissionStatement, loadMissionStatement } from "./js/missionStatement.js";
+import { loadEvents, loadEventData, setupEventForm } from "./js/events.js";
+import { sendMessage, getMessages, deleteMessage } from "./js/sendMessage.js";
 
-import { loadEvents } from "./js/events.js";
+
+
 
 async function navigateTo(viewName) {
   const viewPath = `views/${viewName}.html`;
@@ -23,6 +26,15 @@ async function navigateTo(viewName) {
         break;
       case "admin/events":
         await loadEvents();
+        break;
+      case "admin/edit-event":
+        await loadEvents();
+        await loadEventData(window.currentEditId);
+        await setupEventForm(window.currentEditId);
+        break;
+      case "admin/message":
+        await getMessages();
+        await sendMessage();
         break;
       default:
         // No additional JS to load

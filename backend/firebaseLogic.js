@@ -1,6 +1,7 @@
+const { get } = require("jquery");
 const { db, doc, getDoc, getDocs, setDoc, collection, deleteDoc } = require("../firebase.js");
 
-// GET MISSION DATA
+// MISSIONS
 // ADMIN
 async function getMissionStatement() {
   const docRef = doc(db, "settings", "mission");
@@ -26,7 +27,7 @@ const updateMissionStatement = async (newStatement) => {
 }
 
 
-// _____EVENTS DATA_____
+// _____EVENTS_____
 //ADMIN
 
 async function getEvents() {
@@ -54,12 +55,66 @@ async function deleteEvent(eventId) {
 
 };
 
+async function getEventById(eventId) {
+  const docRef = doc(db, "events", eventId);
+  const docSnap = await getDoc(docRef);
+  if (!docSnap.exists()) return null;
+  return docSnap.data();
+}
+
+async function updateEvent(eventId, updatedData) {
+  const docRef = doc(db, "events", eventId);
+  await setDoc(docRef, updatedData, { merge: true });
+  console.log(`Event ${eventId} updated.`);
+}
+
+
+// ____MESSAGES____
+
+
+async function sendMessage(messageData) {
+  const messagesCollection = collection(db, "announcements");
+  const newMessageRef = doc(messagesCollection);
+  await setDoc(newMessageRef, messageData);
+  console.log("Message sent:", messageData);
+}
+
+async function getMessages() {
+  const messagesCollection = collection(db, "announcements");
+  const messagesSnap = await getDocs(messagesCollection);
+  
+  try {
+    const messagesList = messagesSnap.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    })); 
+    return messagesList;
+  } catch (error) {
+    console.error("Error fetching messages:", error);
+    return [];
+  }
+
+}
+
+async function deleteMessage(messageId) {
+  const eventDocRef = doc(db, "announcements", messageId);
+  await deleteDoc(eventDocRef);
+  console.log(`Message with ID ${messageId} deleted.`);
+
+};
+
+
 
 module.exports = {
   getMissionStatement,
   updateMissionStatement,
   getEvents,
-  deleteEvent
+  deleteEvent,
+  getEventById, 
+  updateEvent,
+  sendMessage,
+  getMessages,
+  deleteMessage
 };
 
 

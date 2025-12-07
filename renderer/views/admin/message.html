@@ -1,0 +1,28 @@
+<div class="send-message-container">
+  <h2>Send a Message</h2>
+
+  <form id="sendMessageForm">
+    <label for="msgTitle">Title (optional)</label>
+    <input type="text" id="msgTitle" placeholder="Enter a title..." />
+
+    <label for="msgBody">Message</label>
+    <textarea id="msgBody" placeholder="Type your message..." rows="6"></textarea>
+
+    <div class="button-row">
+      <button type="button" id="cancelBtn" class="cancel-btn">Back</button>
+      <button type="submit" class="send-btn">Send Message</button>
+    </div>
+
+
+  </form>
+</div>
+
+<div class="messages-container">
+  <h2>All Messages</h2>
+
+  <div id="messagesList" class="messages-list"></div>
+
+  <button class="send-new-btn" onclick="navigateTo('admin/send-message')">
+    Send New Message
+  </button>
+</div>
