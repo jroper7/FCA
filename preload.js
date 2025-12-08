@@ -1,9 +1,30 @@
 const { contextBridge, ipcRenderer } = require("electron");
 
+
 // const path = require("path");
+console.log("PRELOAD LOADED");
+
+process.on("uncaughtException", (err) => {
+  console.error("PRELOAD UNCAUGHT EXCEPTION:", err);
+});
+process.on("unhandledRejection", (reason) => {
+    console.error("UNHANDLED REJECTION:", reason);
+});
+
 
 
 contextBridge.exposeInMainWorld("fca", {
+
+    readView: async (viewName) => {
+    if (typeof viewName !== "string") {
+      console.error("readView expected string, got:", viewName);
+      return null;
+    }
+    return await ipcRenderer.invoke("readView", viewName);
+  },
+
+  // Navigation helper
+  navigate: (view) => window.navigateTo(view),
 
    db: {
     
@@ -42,21 +63,17 @@ contextBridge.exposeInMainWorld("fca", {
       getVerseById: (verseId) => ipcRenderer.invoke("bible:getVerseById", verseId)
   },
 
-  navigate: (view) => {
-    
-    window.navigateTo(view);
-  },
+  
 
 
   
   auth: {
-    
-    login: async (email, password) => {
-      console.log("Login attempt:", email);
-    },
-    getUserId: () => ipcRenderer.invoke("auth:getUserId"),
-    
+        login: (email, password) => ipcRenderer.invoke("auth:login", email, password),
+        signup: (email, password) => ipcRenderer.invoke("auth:signup", email, password),
+        logout: () => ipcRenderer.invoke("auth:logout")
   },
+
+  
 
   // Secure logger
   log: (message) => {

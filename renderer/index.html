@@ -8,22 +8,39 @@
 </head>
 <body>
 
+    <nav class="navbar admin-nav" style="display: none;">
+      <div class="navbar-left">
+        <img src="../assets/logo.png" alt="FCA Logo" class="logo">
+        <ul class="nav-links">
+          <li><a href="#" onclick="navigateTo('admin/dashboard')">Home</a></li>
+          <li><a href="#" onclick="navigateTo('admin/devotionals')">Devotionals</a></li>
+          <li><a href="#" onclick="navigateTo('admin/events')">Events</a></li>
+          <li><a href="#" onclick="navigateTo('admin/message')">Messages</a></li>
+        </ul>
+      </div>
+      <div class="navbar-right">
+        <img src="../assets/profile-icon.jpg" class="profile-icon" onclick="navigateTo('admin/profile')">
+      </div>
+    </nav>
 
-  <nav class="navbar">
-    <div class="navbar-left">
-      <img src="../assets/logo.png" alt="FCA Logo" class="logo">
-      <ul class="nav-links">
-         <li><a href="#" onclick="navigateTo('admin/dashboard')">Home</a></li>
-         <li><a href="#" onclick="navigateTo('admin/devotionals')">Devotionals</a></li>
-         <li><a href="#" onclick="navigateTo('admin/events')">Events</a></li>
-         <li><a href="#" onclick="navigateTo('admin/message')">Messages</a></li>
-      </ul>
-    </div>
+
+    <nav class="navbar user-nav" style="display: none;">
+      <div class="navbar-left">
+        <img src="../assets/logo.png" alt="FCA Logo" class="logo">
+        <ul class="nav-links">
+          <li><a href="#" onclick="navigateTo('user/home')">Home</a></li>
+          <li><a href="#" onclick="navigateTo('user/devotionals')">Devotionals</a></li>
+          <li><a href="#" onclick="navigateTo('user/events')">Events</a></li>
+          <li><a href="#" onclick="navigateTo('user/message')">Messages</a></li>
+        </ul>
+      </div>
+      <div class="navbar-right">
+        <img src="../assets/profile-icon.jpg" class="profile-icon" onclick="navigateTo('user/profile')">
+      </div>
+    </nav>
+
   
-    <div class="navbar-right">
-      <img src="../assets/profile-icon.jpg" class="profile-icon">
-    </div>
-  </nav>
+
 
   
   <div id="app"></div>

@@ -1,5 +1,11 @@
 const { initializeApp } = require("firebase/app");
-const { getFirestore, doc, getDoc, getDocs, setDoc, collection, addDoc, deleteDoc, updateDoc } = require("firebase/firestore");
+const { getFirestore, doc, getDoc, getDocs, setDoc, collection, addDoc, deleteDoc, updateDoc, } = require("firebase/firestore");
+
+const {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword
+} = require("firebase/auth");
 
 require("dotenv").config();
 
@@ -18,6 +24,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 console.log("FIREBASE CONFIG:", firebaseConfig);
 
 module.exports = {
@@ -29,5 +36,8 @@ module.exports = {
   collection,
   addDoc,
   deleteDoc,
-  updateDoc
+  updateDoc,
+  auth, 
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword
 };

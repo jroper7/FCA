@@ -1,4 +1,3 @@
-const { get } = require("jquery");
 const { db, doc, getDoc, getDocs, setDoc, collection, deleteDoc, updateDoc } = require("../firebase.js");
 
 // MISSIONS

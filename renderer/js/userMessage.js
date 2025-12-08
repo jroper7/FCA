@@ -54,10 +54,10 @@ export async function loadUserMessages() {
             const card = document.createElement("div");
             card.classList.add("message-card");
 
-            // Get userId for read check
             let userId;
             try {
-                userId = await window.fca.auth.getUserId();
+                userId = window.currentUserId;
+                console.log("Message readBy:", msg.readBy, "UserId:", userId);
             } catch (err) {
                 console.error("Error getting userId:", err);
             }

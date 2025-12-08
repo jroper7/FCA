@@ -1,6 +1,8 @@
 @use "structure.scss";
 @use "nav.scss";
 @use "modal.scss";
+@use "auth-modal.scss";
+@use "message-modal.scss";
 
 //admin 
 @use "dashboard.scss";
@@ -16,4 +18,8 @@
 @use "user-message.scss";
 @use "user-devotionals.scss";
 @use "user-profile.scss";
+
+
+// authentiaction
+@use "auth.scss"
 

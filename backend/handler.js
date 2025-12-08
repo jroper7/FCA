@@ -1,7 +1,9 @@
 const dbLogic = require("./firebaseLogic");
 const bible = require("../bibleAPI.js");
-
-
+const login = require("./auth.js")
+const fs = require("fs");
+const path = require("path");
+const {app} = require("electron")
 
 
 function registerIpcHandlers(ipcMain) {
@@ -39,9 +41,34 @@ function registerIpcHandlers(ipcMain) {
   ipcMain.handle("bible:getChapterVerses", (_, chapterId) => bible.getChapterVerses(chapterId));
   ipcMain.handle("bible:getVerseById", (_, verseId) => bible.getVerseById(verseId))
 
-  
+  // Login 
+  ipcMain.handle("auth:login", (_, email, password) => login.handleLogin(email, password));
+  ipcMain.handle("auth:signup", (_, email, password) => login.handleSignup(email, password));
+  ipcMain.handle("auth:logout", () => ({ success: true })); // optional placeholder
  
 
+  ipcMain.handle("readView", (event, viewName) => {
+    if (typeof viewName !== "string") {
+      console.error("readView called with non-string:", viewName);
+      return null;
+    }
+
+    // Build absolute path
+    const viewPath = path.join(app.getAppPath(), "renderer", "views", `${viewName}.html`);
+
+    // Check file exists
+    if (!fs.existsSync(viewPath)) {
+      console.error("readView file not found:", viewPath);
+      return null;
+    }
+
+    try {
+      return fs.readFileSync(viewPath, "utf-8");
+    } catch (err) {
+      console.error("Failed to read view:", viewName, err);
+      return null;
+    }
+  });
   
 }
 
