@@ -24,8 +24,23 @@ contextBridge.exposeInMainWorld("fca", {
     deleteMessage: (messageId) => ipcRenderer.invoke("db:deleteMessage", messageId),
     markMessageRead: (id, userId) => ipcRenderer.invoke("db:markMessageRead", id, userId),
 
+    devotionals: {
+        getDevotionals: () => ipcRenderer.invoke("db:getDevotionals"),
+        deleteDevotional: (devotionalId) => ipcRenderer.invoke("db:deleteDevotional", devotionalId),
+        getDevotionalById: (devotionalId) => ipcRenderer.invoke("db:getDevotionalById", devotionalId),
+        updateDevotional: (devotionalId, updatedData) => ipcRenderer.invoke("db:updateDevotional", devotionalId, updatedData),
+        createDevotional: (devotionalData) => ipcRenderer.invoke("db:createDevotional", devotionalData)
+    },
+
   },
 
+  bible: {
+      getBooks: () => ipcRenderer.invoke("bible:getBooks"),
+      getChapters: (bookId) => ipcRenderer.invoke("bible:getChapters", bookId),
+      getVerseText: (chapterId, verseNumber) => ipcRenderer.invoke("bible:getVerseText", chapterId, verseNumber),
+      getChapterVerses: (chapterId) => ipcRenderer.invoke("bible:getChapterVerses", chapterId),
+      getVerseById: (verseId) => ipcRenderer.invoke("bible:getVerseById", verseId)
+  },
 
   navigate: (view) => {
     

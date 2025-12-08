@@ -123,6 +123,54 @@ function getUserIdFromSession(session) {
     return session?.userId || null;
 }
 
+// _____DEVOTIONALS_____
+// ADMIN
+
+async function getDevotionals() {
+  try {
+    const devotionalsCollection = collection(db, "devotionals");
+    const devotionalsSnap = await getDocs(devotionalsCollection);
+
+    const devotionalsList = devotionalsSnap.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+
+    return devotionalsList;
+  } catch (error) {
+    console.error("Error fetching devotionals:", error);
+    return [];
+  }
+}
+
+async function deleteDevotional(devotionalId) {
+  const devotionalDocRef = doc(db, "devotionals", devotionalId);
+  await deleteDoc(devotionalDocRef);
+  console.log(`Devotional with ID ${devotionalId} deleted.`);
+}
+
+async function getDevotionalById(devotionalId) {
+  const docRef = doc(db, "devotionals", devotionalId);
+  const docSnap = await getDoc(docRef);
+  if (!docSnap.exists()) return null;
+  return docSnap.data();
+}
+
+async function updateDevotional(devotionalId, updatedData) {
+  const docRef = doc(db, "devotionals", devotionalId);
+  await setDoc(docRef, updatedData, { merge: true });
+  console.log(`Devotional ${devotionalId} updated.`);
+}
+
+async function createDevotional(devotionalData) {
+  const devotionalsCollection = collection(db, "devotionals");
+  const newDevotionalRef = doc(devotionalsCollection);
+  await setDoc(newDevotionalRef, devotionalData);
+  // console.log("Devotional created:", devotionalData);
+}
+
+
+
 
 
 
@@ -138,7 +186,12 @@ module.exports = {
   getMessages,
   deleteMessage, 
   markMessageRead,
-  getUserIdFromSession
+  getUserIdFromSession,
+  getDevotionals,
+  deleteDevotional,
+  getDevotionalById,
+  updateDevotional,
+  createDevotional
 };
 
 

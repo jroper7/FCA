@@ -1,11 +1,19 @@
 @use "structure.scss";
 @use "nav.scss";
+@use "modal.scss";
+
+//admin 
 @use "dashboard.scss";
 @use "events.scss"; 
 @use "edit-event.scss";
 @use "message.scss";
 @use "create-event.scss";
+@use "admin-devotionals.scss";
+
+// USER
 @use "user-home.scss";
 @use "user-event.scss";
 @use "user-message.scss";
-@use "modal.scss";
+@use "user-devotionals.scss";
+@use "user-profile.scss";
+

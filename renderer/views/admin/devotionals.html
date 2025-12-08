@@ -1,0 +1,49 @@
+<div class="devotional-container">
+  <h1>Create New Devotional</h1>
+  <form id="createDevotionalForm">
+    <label>
+      Title:
+      <input type="text" id="devotionalTitle" required />
+    </label>
+    <label>
+      Date:
+      <input type="date" id="devotionalDate" required />
+    </label>
+
+    <div class="verse-selection">
+      <label>
+        Book:
+        <select id="bookSelect">
+          <option value="">Select Book</option>
+        </select>
+      </label>
+
+      <label>
+        Chapter:
+        <select id="chapterSelect" disabled>
+          <option value="">Select Chapter</option>
+        </select>
+      </label>
+
+      <label>
+        Verse:
+        <select id="verseSelect" disabled>
+          <option value="">Select Verse</option>
+        </select>
+      </label>
+
+      <button type="button" id="addVerseBtn">Add Verse</button>
+    </div>
+
+    <div id="selectedVerses"></div>
+
+    <button type="submit">Create Devotional</button>
+  </form>
+
+  <hr />
+
+  <h2>Existing Devotionals</h2>
+  <div id="devotionalsList">
+    
+  </div>
+</div>

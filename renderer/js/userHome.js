@@ -100,12 +100,63 @@ export async function loadMessages() {
     }
 }
 
+export async function loadDevotionals() {
+    const list = document.getElementById("user-devotionalsList");
+    if (!list) return;
+
+    try {
+        // Fetch devotionals (limit to 2 for the home dashboard)
+        let devotionals = await window.fca.db.devotionals.getDevotionals();
+
+        // Sort by date, newest first
+        devotionals.sort((a, b) => {
+            const dA = a.date?.seconds ? new Date(a.date.seconds * 1000) : new Date();
+            const dB = b.date?.seconds ? new Date(b.date.seconds * 1000) : new Date();
+            return dB - dA;
+        });
+
+        // Only take the latest 2
+        devotionals = devotionals.slice(0, 2);
+
+        // Clear placeholder cards
+        list.querySelectorAll('.devotional-card').forEach(c => c.remove());
+
+        devotionals.forEach(dev => {
+            const jsDate = dev.date?.seconds ? new Date(dev.date.seconds * 1000) : new Date();
+            const formattedDate = jsDate.toLocaleDateString();
+
+            const firstVerse = dev.verses[0];
+            const verseText = firstVerse
+                ? `${firstVerse.book} ${firstVerse.chapter}:${firstVerse.verse} - ${firstVerse.text.replace(/<[^>]+>/g,'')}`
+                : '';
+
+            const card = document.createElement("div");
+            card.classList.add("devotional-card");
+
+            card.innerHTML = `
+                <img src="../assets/open-book.png" class="devotional-icon" alt="Book Icon" />
+                <div>
+                    <h3>${dev.title}</h3>
+                    <p class="devotional-date">${formattedDate}</p>
+                    <p>${verseText}</p>
+                </div>
+            `;
+
+            list.appendChild(card);
+        });
+
+    } catch (err) {
+        console.error("Error loading devotionals:", err);
+    }
+}
+
 
 
 export function initHomePage() {
     loadMissionStatement();
     loadEvents();
     loadMessages();
+    loadDevotionals();
 }
 
 document.addEventListener("DOMContentLoaded", initHomePage);

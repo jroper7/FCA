@@ -2,11 +2,13 @@ import { editMissionStatement, loadMissionStatement } from "./js/missionStatemen
 import { loadEvents, loadEventData, setupEventForm } from "./js/events.js";
 import { setupCreateEventForm } from "./js/createEvent.js"; 
 import { sendMessage, getMessages } from "./js/sendMessage.js";
+import { loadDevotionals } from "./js/devotionals.js";
 
 // User functions
 import { initHomePage } from "./js/userHome.js";
 import { loadAllEvents } from "./js/userEvent.js";
 import { loadUserMessages} from "./js/userMessage.js";
+import { loadDevotionalsPage } from "./js/userDevotionals.js"
 
 
 
@@ -29,6 +31,9 @@ async function navigateTo(viewName) {
       case "user/message":
         await loadUserMessages();
         break;
+      case "user/devotionals":
+        await loadDevotionalsPage();
+        break;
       case "admin/mission":
         await loadMissionStatement();
         const updateBtn = document.getElementById("updateMissionBtn");
@@ -49,6 +54,9 @@ async function navigateTo(viewName) {
         await getMessages();
         await sendMessage();
         break;
+      case "admin/devotionals":
+        await loadDevotionals();
+        break;
       default:
         // No additional JS to load
         break;
@@ -62,4 +70,4 @@ async function navigateTo(viewName) {
 window.navigateTo = navigateTo;
 
 // Start with login page
-navigateTo("user/events");
+navigateTo("user/devotionals");

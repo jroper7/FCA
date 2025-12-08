@@ -8,32 +8,23 @@
         <div class="column" id="eventsColumn">
             <h2>Upcoming Events</h2>
             <div id="eventsList"></div>
-            <button class="view-all-btn">View All Events</button>
+            <button class="view-all-btn" onclick="navigateTo('user/events')">View All Events</button>
         </div>
 
         <div class="column" id="devotionalsColumn">
             <h2>Latest Devotionals</h2>
-            <div class="devotional-card">
-                <img src="../assets/open-book.png" class="devotional-icon" alt="Book Icon" />
-                <div>
-                    <h3>Faith in Action</h3>
-                    <p>"Trust in the Lord with all your heart." - Proverbs 3:5</p>
+            <div class="devotionals-card">
+                <div id="user-devotionalsList">
                 </div>
             </div>
-            <div class="devotional-card">
-                <img src="../assets/open-book.png" class="devotional-icon" alt="Book Icon" />
-                <div>
-                    <h3>Strength in Trials</h3>
-                    <p>"I can do all things through Christ who strengthens me." - Philippians 4:13</p>
-                </div>
-            </div>
-            <button class="view-all-btn">View All Devotionals</button>
+            
+            <button class="view-all-btn" onclick="navigateTo('user/devotionals')">View All Devotionals</button>
         </div>
 
         <div class="column" id="messagesColumn">
             <h2>Recent Messages</h2>
             <div id="messagesList"></div>
-            <button class="view-all-btn">Read All Messages</button>
+            <button class="view-all-btn" onclick="navigateTo('user/message')">Read All Messages</button>
         </div>
     </section>
 </main>
